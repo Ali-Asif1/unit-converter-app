@@ -1,12 +1,10 @@
 
 import streamlit as st
 
-st.title("📏 Simple Unit Converter")
+st.title('"Welcome to Unit Converter"')
 
-conversion_type = "Length"
 
-# Length conversion function
-def convert_length(value, from_unit, to_unit):
+def main(value, from_unit, to_unit):
     length_units = {
         "Meter": 1,
         "Kilometer": 0.001,
@@ -18,13 +16,11 @@ def convert_length(value, from_unit, to_unit):
 
 
 units = ["Meter", "Kilometer", "Centimeter", "Millimeter"]
+value = float(st.number_input("Enter value:", min_value=0.0))
 from_unit = st.selectbox("Convert from:", units)
 to_unit = st.selectbox("Convert to:", units)
-value = st.number_input("Enter value:", min_value=0.0)
 
-
-# Convert and display result
 
 if st.button("Convert"):
-    result = convert_length(value, from_unit, to_unit)
-    st.success(f"Converted Value: {result:.3f} {to_unit}")
+    result = main(value, from_unit, to_unit)
+    st.success(f"Converted Value: {result} {to_unit}")
